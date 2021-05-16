@@ -1,13 +1,14 @@
+import "./style.css";
+
 import React from "react";
-import Reminder from "./Reminder";
 import { render } from "react-dom";
 
 const App = () => {
-  return (
-    <div>
-      <Reminder />
-    </div>
-  );
+    return (
+        <React.StrictMode>
+            <div className="app"></div>
+        </React.StrictMode>
+    );
 };
 
 render(<App />, document.getElementById("root"));
