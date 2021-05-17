@@ -1,3 +1,13 @@
+body {
+    margin: 0;
+}
+
 .app {
-    background-color: #f6ccc3;
+    background-color: #fff;
+}
+
+.callout {
+    margin: 15px;
+    padding: 15px 20px;
+    background-color: #f9f9fa;
 }

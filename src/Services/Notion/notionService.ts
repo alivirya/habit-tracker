@@ -33,10 +33,3 @@ const useRetrieveNotionBlockChildren = async (
         block_id: blockId,
     });
 };
-
-(async () => {
-    const dailyBoard = await useRetrieveNotionBlockChildren(
-        notionPages.dailyBoard
-    );
-    console.log(dailyBoard.results);
-})();

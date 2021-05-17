@@ -1,14 +1,22 @@
 import "./style.css";
 
-import { MonthlyChallenge } from "./MonthlyChallenge";
+import { CalloutComponent } from "./Components/CalloutComponent";
 import React from "react";
 import { render } from "react-dom";
+
+const currentChallenge = {
+    topic: "Monthly Challenge",
+    description: "Intermittent fasting 18:6",
+};
 
 const App = () => {
     return (
         <React.StrictMode>
             <div className="app">
-                <MonthlyChallenge />
+                <CalloutComponent
+                    topic={currentChallenge.topic}
+                    description={currentChallenge.description}
+                />
             </div>
         </React.StrictMode>
     );
