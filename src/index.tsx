@@ -1,6 +1,6 @@
 import "./style.css";
 
-import { MonthlyChallenge } from "./MonthlyChallenge";
+import { CurrentMedia } from "./CurrentMedia";
 import React from "react";
 import { render } from "react-dom";
 
@@ -8,7 +8,7 @@ const App = () => {
     return (
         <React.StrictMode>
             <div className="app">
-                <MonthlyChallenge />
+                <CurrentMedia />
             </div>
         </React.StrictMode>
     );
