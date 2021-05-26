@@ -1,5 +1,4 @@
 import { config } from "dotenv";
-
 config();
 
 export const notionPages = {
@@ -9,43 +8,21 @@ export const notionPages = {
         "ebf89872d3d6416f8ae0e4170270ec08?v=ec98f34416274dfea005f5fcf2e66c01",
 };
 
-const request = new Request("https://api.notion.com/v1", {
-    hostname: "api.notion.com",
-    path: "/v1/databases",
-    method: "GET",
-    headers: {
-        "Notion-Version": "2021-05-13",
-        Authorization: `Bearer ${process.env.integration_token}`,
-    },
+const createDbUrl = (dbPath: string): string => {
+    const dbUrl = new URL(`/v1/databases/${dbPath}`, "https://api.notion.com");
+    return dbUrl.toString();
 };
 
-const makeRequest = (options) => {
-    return new Promise((resolve, reject) => {
-        const req = https.request(options, (res) => {
-            let buffer = "";
-            res.on("data", (d) => {
-                buffer += d;
-            });
-
-            res.on("end", () => {
-                resolve(JSON.parse(buffer));
-            });
-
-            res.on("error", (error) => reject(error));
-        });
-
-        req.end();
+export const useRetrieveNotionDatabase = async (dbId: string): Promise<any> => {
+    const request = new Request(createDbUrl(dbId), {
+        method: "GET",
+        headers: new Headers({
+            "Notion-Version": "2021-05-13",
+            Authorization: `Bearer ${process.env.NOTION_TOKEN}`,
+        }),
+        mode: "no-cors",
     });
+    const response = await fetch(request);
+    console.log(response);
+    return response.json();
 };
-
-const getDbInformation = async (db_id) => {
-    const options = {
-        ...defaultOptions,
-        path: `${defaultOptions.path}/${db_id}`,
-    };
-
-    const info = await makeRequest(options);
-    console.log(info.properties);
-};
-
-getDbInformation(process.env.places_db);
