@@ -1,35 +1,28 @@
-import { Block, Database, Page, PaginatedList } from "./notionTypes";
-
-import { Client } from "@notionhq/client";
 import { config } from "dotenv";
-
 config();
 
-const notionPages = {
+export const notionPages = {
     today: "24dffb3bccac430c912a94db6b10aecc",
     dailyBoard: "a311538a-d0d1-4f43-aafb-1f4afda58692",
+    readingList:
+        "ebf89872d3d6416f8ae0e4170270ec08?v=ec98f34416274dfea005f5fcf2e66c01",
 };
 
-const notion = new Client({
-    auth: process.env.NOTION_TOKEN,
-});
-
-const useRetrieveNotionPage = async (pageId: string): Promise<Page> => {
-    return await notion.pages.retrieve({
-        page_id: pageId,
-    });
+const createDbUrl = (dbPath: string): string => {
+    const dbUrl = new URL(`/v1/databases/${dbPath}`, "https://api.notion.com");
+    return dbUrl.toString();
 };
 
-const useRetrieveNotionDatabase = async (dbId: string): Promise<Database> => {
-    return await notion.databases.retrieve({
-        database_id: dbId,
+export const useRetrieveNotionDatabase = async (dbId: string): Promise<any> => {
+    const request = new Request(createDbUrl(dbId), {
+        method: "GET",
+        headers: new Headers({
+            "Notion-Version": "2021-05-13",
+            Authorization: `Bearer ${process.env.NOTION_TOKEN}`,
+        }),
+        mode: "no-cors",
     });
-};
-
-const useRetrieveNotionBlockChildren = async (
-    blockId: string
-): Promise<PaginatedList<Block>> => {
-    return await notion.blocks.children.list({
-        block_id: blockId,
-    });
+    const response = await fetch(request);
+    console.log(response);
+    return response.json();
 };

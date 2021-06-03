@@ -1,22 +1,14 @@
 import "./style.css";
 
-import { CalloutComponent } from "./Components/CalloutComponent";
+import { CurrentMedia } from "./CurrentMedia";
 import React from "react";
 import { render } from "react-dom";
-
-const currentChallenge = {
-    topic: "Monthly Challenge",
-    description: "Intermittent fasting 18:6",
-};
 
 const App = () => {
     return (
         <React.StrictMode>
             <div className="app">
-                <CalloutComponent
-                    topic={currentChallenge.topic}
-                    description={currentChallenge.description}
-                />
+                <CurrentMedia />
             </div>
         </React.StrictMode>
     );
