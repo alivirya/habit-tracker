@@ -1,13 +1,36 @@
+html,
+body,
+#root {
+    height: 100%;
+}
+
 body {
     margin: 0;
 }
 
 .app {
+    height: 100%;
     background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.callout {
-    margin: 15px;
-    padding: 15px 20px;
-    background-color: #f9f9fa;
+.tracker {
+    display: flex;
+    flex-direction: row;
+}
+
+.dailyCheckBoxContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    align-items: center;
+}
+
+.dailyCheckBox {
+}
+
+.dailyCheckBoxLabel {
+    text-align: center;
 }
