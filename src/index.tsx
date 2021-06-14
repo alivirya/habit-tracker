@@ -1,45 +1,17 @@
 import "./style.css";
 
-import React, { Fragment } from "react";
+import React, { ReactElement } from "react";
 
+import { HabitContainer } from "./Components/HabitContainer";
 import { render } from "react-dom";
 
-const App = () => {
+const App = (): ReactElement => {
     return (
         <React.StrictMode>
             <div className="app">
-                <Tracker />
+                <HabitContainer />
             </div>
         </React.StrictMode>
-    );
-};
-
-const Tracker = () => {
-    return (
-        <div className="tracker">
-            <DayCheckBox day="Monday" />
-            <DayCheckBox day="Tuesday" />
-            <DayCheckBox day="Wednesday" />
-            <DayCheckBox day="Thursday" />
-            <DayCheckBox day="Friday" />
-            <DayCheckBox day="Saturday" />
-            <DayCheckBox day="Sunday" />
-        </div>
-    );
-};
-
-export interface DayCheckBoxProps {
-    day: string;
-}
-
-const DayCheckBox = ({ day }: DayCheckBoxProps) => {
-    return (
-        <div className="dailyCheckBoxContainer">
-            <label htmlFor={day} className="dailyCheckboxLabel">
-                {day}
-            </label>
-            <input type="checkbox" name={day} className="dailyCheckBox" />
-        </div>
     );
 };
 
