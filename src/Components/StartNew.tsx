@@ -28,7 +28,7 @@ const StartNewModal = ({
     const [newHabitValue, setNewHabitValue] = useState("");
 
     const createNewTracker = (event: any) => {
-        setHabitsToTrack([...habits, newHabitValue]);
+        chrome.storage.local.set({ habits: [...habits, newHabitValue] });
         event.preventDefault();
         close();
     };
