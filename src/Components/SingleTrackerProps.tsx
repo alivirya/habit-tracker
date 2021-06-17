@@ -1,25 +1,12 @@
-import React, { Fragment, ReactElement } from "react";
+import React, { ReactElement } from "react";
 
 import { DayCheckBox } from "./DayCheckBox";
 
-export interface TrackersProps {
-    habits: any;
-}
-export const Trackers = ({ habits }: TrackersProps): ReactElement => {
-    return (
-        <Fragment>
-            {habits.forEach((element: any) => {
-                <Tracker habit={element} />;
-            })}
-        </Fragment>
-    );
-};
-
-export interface TrackerProps {
+export interface SingleTrackerProps {
     habit: string;
 }
 
-export const Tracker = ({ habit }: TrackerProps): ReactElement => {
+export const SingleTracker = ({ habit }: SingleTrackerProps): ReactElement => {
     return (
         <div className="tracker">
             <div className="habitToTrack">{habit}</div>

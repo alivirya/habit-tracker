@@ -1,19 +1,24 @@
 import React, { ReactElement, useEffect, useState } from "react";
 
+import { HabitProperties } from "../Types/Habit";
 import { StartNew } from "./StartNew";
-import { Tracker } from "./Tracker";
+import { Trackers } from "./Trackers";
 
 export const HabitContainer = (): ReactElement => {
-    const [habitsToTrack, setHabitsToTrack] = useState<string[]>([]);
+    const [habitsToTrack, setHabitsToTrack] = useState<HabitProperties[]>([]);
 
-    // hmmm this currently doesn't update dynamically - will need to change so it does
     useEffect(() => {
-        chrome.storage.local.get("habits", ({ habits }: any) => {
-            console.log(habits);
-            if (Object.keys(habits).length === 0) return;
-            setHabitsToTrack(habits);
-        });
+        chrome.storage.local.get(
+            "habits",
+            ({ habits }: { [key: string]: HabitProperties[] }) => {
+                setHabitsToTrack(habits);
+            }
+        );
     }, []);
+
+    useEffect(() => {
+        chrome.storage.local.set({ habits: habitsToTrack });
+    }, [habitsToTrack]);
 
     return (
         <div className="habitContainer">
@@ -21,9 +26,7 @@ export const HabitContainer = (): ReactElement => {
                 habits={habitsToTrack}
                 setHabitsToTrack={setHabitsToTrack}
             />
-            {habitsToTrack.map((habit) => {
-                return <Tracker habit={habit} key={habit} />;
-            })}
+            <Trackers habits={habitsToTrack} />
         </div>
     );
 };

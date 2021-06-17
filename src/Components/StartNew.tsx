@@ -1,7 +1,9 @@
-import React, { ReactElement, useState } from "react";
+import React, { FormEvent, ReactElement, useState } from "react";
+
+import { HabitProperties } from "../Types/Habit";
 
 export interface StartNewProps {
-    habits: any;
+    habits: HabitProperties[];
     setHabitsToTrack: any;
 }
 
@@ -15,7 +17,7 @@ export const StartNew = (props: StartNewProps): ReactElement => {
         <div>
             <StartNewModal {...props} />
             <button className="startButton" onClick={newHabit}>
-                Start new habit
+                + Start new habit
             </button>
         </div>
     );
@@ -27,9 +29,14 @@ const StartNewModal = ({
 }: StartNewProps): ReactElement => {
     const [newHabitValue, setNewHabitValue] = useState("");
 
-    const createNewTracker = (event: any) => {
-        chrome.storage.local.set({ habits: [...habits, newHabitValue] });
+    const createNewTracker = (event: FormEvent<HTMLElement>) => {
         event.preventDefault();
+        const newHabit = {
+            name: newHabitValue,
+            startDate: Date.now(),
+            length: 0,
+        };
+        setHabitsToTrack([...habits, newHabit]);
         close();
     };
 

@@ -23,8 +23,11 @@ body {
 }
 
 .startButton {
+    height: 32px;
+    color: rgba(55, 53, 47, 0.6);
+    border: none;
+    background: transparent;
 }
-
 .startNewModal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
