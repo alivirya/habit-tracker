@@ -1,6 +1,7 @@
 import React, { ReactElement } from "react";
 
 import { DayCheckBox } from "./DayCheckBox";
+import { DaysOfTheWeek } from "../Util/days";
 
 export interface SingleTrackerProps {
     habit: string;
@@ -8,15 +9,10 @@ export interface SingleTrackerProps {
 
 export const SingleTracker = ({ habit }: SingleTrackerProps): ReactElement => {
     return (
-        <div className="tracker">
-            <div className="habitToTrack">{habit}</div>
-            <DayCheckBox day="Monday" />
-            <DayCheckBox day="Tuesday" />
-            <DayCheckBox day="Wednesday" />
-            <DayCheckBox day="Thursday" />
-            <DayCheckBox day="Friday" />
-            <DayCheckBox day="Saturday" />
-            <DayCheckBox day="Sunday" />
+        <div className="tracker row">
+            {DaysOfTheWeek.map((day) => {
+                return <DayCheckBox day={day} key={day} />;
+            })}
         </div>
     );
 };

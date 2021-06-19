@@ -6,11 +6,13 @@ export interface DayCheckBoxProps {
 
 export const DayCheckBox = ({ day }: DayCheckBoxProps): ReactElement => {
     return (
-        <div className="dailyCheckBoxContainer">
-            <label htmlFor={day} className="dailyCheckboxLabel">
-                {day}
-            </label>
-            <input type="checkbox" name={day} className="dailyCheckBox" />
+        <div className="dailyBoxContainer">
+            <input
+                type="checkbox"
+                name={day}
+                className="dailyCheckBox"
+                aria-label={day}
+            />
         </div>
     );
 };

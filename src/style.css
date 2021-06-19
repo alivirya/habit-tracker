@@ -6,6 +6,9 @@ body,
 
 body {
     margin: 0;
+    font-family: "Arial";
+    font-size: 17px;
+    color: rgba(55, 53, 47, 0.8);
 }
 
 .app {
@@ -24,10 +27,18 @@ body {
 
 .startButton {
     height: 32px;
+    font-size: 17px;
     color: rgba(55, 53, 47, 0.6);
     border: none;
     background: transparent;
+    transition: background 20ms ease-in 0s;
+    cursor: pointer;
 }
+
+.startButton:hover {
+    background: rgba(55, 53, 47, 0.08);
+}
+
 .startNewModal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -63,9 +74,48 @@ body {
     align-items: center;
 }
 
-.dailyCheckBox {
+.habitToTrack {
+    font-size: 17px;
 }
 
-.dailyCheckBoxLabel {
-    text-align: center;
+.trackers {
+    display: flex;
+    flex-direction: row;
+}
+
+.row {
+    margin-bottom: 5px;
+}
+
+.nameColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-right: 10px;
+}
+
+.habitTrackers {
+    display: flex;
+    flex-direction: column;
+}
+
+.week {
+    display: flex;
+    justify-content: space-around;
+}
+
+.tracker {
+    display: flex;
+    justify-content: space-around;
+}
+
+.dailyBoxContainer {
+    margin: 0px 10px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.dailyCheckBox {
+    width: 100%;
 }
