@@ -42,7 +42,7 @@ const updateHabitLength = (
             return {
                 name: h.name,
                 startDate: h.startDate,
-                length: h.length + value,
+                weeklyCount: h.weeklyCount + value,
             };
         }
         return h;

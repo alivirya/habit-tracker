@@ -10,7 +10,7 @@ export const Callout = ({ habits }: CalloutProps): ReactElement => {
     return (
         <div className="callout">
             {habits.map((h) => {
-                return <GJ name={h.name} length={h.length} key={h.name} />;
+                return <GJ name={h.name} length={h.weeklyCount} key={h.name} />;
             })}
         </div>
     );
@@ -22,9 +22,13 @@ interface GJProps {
 }
 
 const GJ = ({ name, length }: GJProps): ReactElement => {
+    // make it so the emoji is configurable?
     return (
-        <Fragment>
-            You have been doing {name} for {length} days!
-        </Fragment>
+        <div className="dotdot">
+            <span role="img" aria-label="">
+                🎉
+            </span>
+            You have been <b>{name}</b> for <b>{length}</b> days!
+        </div>
     );
 };

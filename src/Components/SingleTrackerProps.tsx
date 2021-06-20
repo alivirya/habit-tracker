@@ -1,7 +1,7 @@
 import React, { ReactElement } from "react";
 
 import { DayCheckBox } from "./DayCheckBox";
-import { DaysOfTheWeek } from "../Util/days";
+import { DaysOfTheWeek } from "../Util/dateUtil";
 import { UpdateHabitProps } from "../Types/Habit";
 
 export interface SingleTrackerProps extends UpdateHabitProps {

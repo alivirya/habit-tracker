@@ -1,6 +1,6 @@
 export interface HabitProperties {
     name: string;
-    length: number;
+    weeklyCount: number;
     startDate: Date;
 }
 

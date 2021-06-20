@@ -1,7 +1,7 @@
 import { HabitProperties, UpdateHabitProps } from "../Types/Habit";
 import React, { ReactElement } from "react";
 
-import { DaysOfTheWeek } from "../Util/days";
+import { DaysOfTheWeek } from "../Util/dateUtil";
 import { SingleTracker } from "./SingleTrackerProps";
 
 export const Trackers = ({
