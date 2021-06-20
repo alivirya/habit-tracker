@@ -24,8 +24,8 @@ export const DayCheckBox = ({
             <input
                 type="checkbox"
                 name={day}
-                className="dailyCheckBox"
-                id={`${day}CheckBox`}
+                className={`${name}dailyCheckBox`}
+                id={`${name}${day}CheckBox`}
                 aria-label={day}
                 onClick={onCheckboxClicked}
             />
