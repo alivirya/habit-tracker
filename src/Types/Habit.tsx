@@ -1,8 +1,17 @@
-import { DateTime } from "luxon";
+export interface Days {
+    [day: string]: boolean;
+    Monday: boolean;
+    Tuesday: boolean;
+    Wednesday: boolean;
+    Thursday: boolean;
+    Friday: boolean;
+    Saturday: boolean;
+    Sunday: boolean;
+}
 
 export interface HabitProperties {
     name: string;
-    weeklyCount: number;
+    weeklyTracker: Days;
     startDate: string;
 }
 

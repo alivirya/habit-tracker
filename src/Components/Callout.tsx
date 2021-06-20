@@ -1,8 +1,8 @@
+import { Days, HabitProperties } from "../Types/Habit";
 import React, { ReactElement } from "react";
+import { countDays, getDaysSinceText } from "../Util/dateUtil";
 
 import { DateTime } from "luxon";
-import { HabitProperties } from "../Types/Habit";
-import { getDaysSinceText } from "../Util/dateUtil";
 
 export interface CalloutProps {
     habits: HabitProperties[];
@@ -12,10 +12,11 @@ export const Callout = ({ habits }: CalloutProps): ReactElement => {
     return (
         <div className="callout">
             {habits.map((h) => {
+                const weeklyCount = countDays(h.weeklyTracker);
                 return (
                     <GJ
                         name={h.name}
-                        length={h.weeklyCount}
+                        length={weeklyCount}
                         startDate={h.startDate}
                         key={h.name}
                     />

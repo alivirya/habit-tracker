@@ -5,25 +5,27 @@ export interface DayCheckBoxProps extends UpdateHabitProps {
     name: string;
     day: string;
 }
-
 export const DayCheckBox = ({
     name,
     day,
     habits,
     setHabits,
 }: DayCheckBoxProps): ReactElement => {
-    const [isChecked, setIsChecked] = useState(false);
+    const habit = getHabit(name, habits);
+    const [isChecked, setIsChecked] = useState(habit.weeklyTracker[day]);
 
     const onCheckboxClicked = () => {
         setIsChecked(!isChecked);
-        setHabits(updateHabitLength(name, habits, !isChecked));
+        setHabits(updateHabitLength(name, habits, !isChecked, day));
     };
+
     return (
         <div className="cellContainer">
             <input
                 type="checkbox"
                 name={day}
                 className="dailyCheckBox"
+                id={`${day}CheckBox`}
                 aria-label={day}
                 onClick={onCheckboxClicked}
             />
@@ -31,18 +33,28 @@ export const DayCheckBox = ({
     );
 };
 
+export const getHabit = (
+    name: string,
+    habits: HabitProperties[]
+): HabitProperties => {
+    return habits.find((h) => h.name === name)!;
+};
+
 const updateHabitLength = (
     habitName: string,
     habits: HabitProperties[],
-    isChecked: boolean
+    isChecked: boolean,
+    day: string
 ): HabitProperties[] => {
-    const value = isChecked ? 1 : -1;
     return habits.map((h) => {
         if (h.name === habitName) {
             return {
                 name: h.name,
                 startDate: h.startDate,
-                weeklyCount: h.weeklyCount + value,
+                weeklyTracker: {
+                    ...h.weeklyTracker,
+                    [day]: isChecked,
+                },
             };
         }
         return h;

@@ -1,4 +1,5 @@
 import { DateTime } from "luxon";
+import { Days } from "../Types/Habit";
 
 export const DaysOfTheWeek = [
     "Monday",
@@ -37,15 +38,14 @@ export const getDaysSinceText = (
     startDate: string,
     weeklyCount: number
 ): string => {
-    //TODO: need to fix this for when it is the current week
     const current = getTotalCount(weeklyCount);
     const start = DateTime.fromISO(startDate);
-    const { years, months, weeks, days } = current.diff(start, [
-        "years",
-        "months",
-        "weeks",
-        "days",
-    ]);
+    const diff = current.diff(start, ["years", "months", "weeks", "days"]);
+    const { years, months, weeks } = diff;
+    let { days } = diff;
+    if (days < 0) {
+        days = weeklyCount;
+    }
 
     const yearsText = years > 0 ? `${years} years, ` : "";
     const monthsText = months > 0 ? `${months} months, ` : "";
@@ -53,4 +53,14 @@ export const getDaysSinceText = (
     const daysText = `${days} days`;
 
     return `${yearsText}${monthsText}${weeksText}${daysText}`;
+};
+
+export const countDays = (days: Days): number => {
+    let dayCount = 0;
+    const dayValues = Object.values(days);
+    dayValues.forEach((d: boolean) => {
+        if (d) dayCount++;
+    });
+
+    return dayCount;
 };

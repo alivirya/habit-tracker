@@ -1,5 +1,6 @@
 import React, { FormEvent, ReactElement, useState } from "react";
 
+import { HabitProperties } from "../Types/Habit";
 import { StartNewProps } from "./StartNew";
 import { getCurrentFormattedDate } from "../Util/dateUtil";
 
@@ -14,9 +15,17 @@ export const StartNewModal = ({
 
     const createNewTracker = (event: FormEvent<HTMLElement>) => {
         event.preventDefault();
-        const newHabit = {
+        const newHabit: HabitProperties = {
             name: habitName,
-            weeklyCount: 0,
+            weeklyTracker: {
+                Monday: false,
+                Tuesday: false,
+                Wednesday: false,
+                Thursday: false,
+                Friday: false,
+                Saturday: false,
+                Sunday: false,
+            },
             startDate: habitStartDate,
         };
         setHabits([...habits, newHabit]);

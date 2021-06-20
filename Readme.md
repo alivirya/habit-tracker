@@ -7,6 +7,7 @@ This is just a project of mine as I'm disatisfied with the way I'm tracking my h
 -   Ability to create new habit trackers
 -   For habit data to be stored somewhere (local storage maybe? too much work to do it elsewhere)
 -   For there to be a count of how long it's been since you've started the habit
+-   Refresh every week
 
 ## Nice to have
 
