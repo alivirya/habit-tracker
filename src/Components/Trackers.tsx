@@ -1,55 +1,41 @@
-import React, { Fragment, ReactElement } from "react";
+import { HabitProperties, UpdateHabitProps } from "../Types/Habit";
+import React, { ReactElement } from "react";
 
 import { DaysOfTheWeek } from "../Util/days";
-import { HabitProperties } from "../Types/Habit";
 import { SingleTracker } from "./SingleTrackerProps";
 
-export interface TrackersProps {
-    habits: HabitProperties[];
-}
-export const Trackers = ({ habits }: TrackersProps): ReactElement => {
+export const Trackers = ({
+    habits,
+    setHabits,
+}: UpdateHabitProps): ReactElement => {
     return (
-        <div className="trackers">
-            <div className="nameColumn">
-                <div className="row">Name</div>
-                {habits.map((habit: HabitProperties) => {
-                    return <HabitName name={habit.name} key={habit.name} />;
-                })}
-            </div>
-            <div className="habitTrackers">
-                <Week />
-                {habits.map((habit: HabitProperties) => {
-                    return (
-                        <SingleTracker habit={habit.name} key={habit.name} />
-                    );
-                })}
-            </div>
-        </div>
-    );
-};
-
-export interface HabitNameProps {
-    name: string;
-}
-
-export const HabitName = ({ name }: HabitNameProps): ReactElement => {
-    return <div className="row">{name}</div>;
-};
-
-export const Week = (): ReactElement => {
-    return (
-        <div className="week row">
-            {DaysOfTheWeek.map((day) => {
-                return <DayOfTheWeek day={day} key={day} />;
+        <div>
+            {habits.length === 0 || <HeaderRow />}
+            {habits.map((habit: HabitProperties) => {
+                return (
+                    <SingleTracker
+                        name={habit.name}
+                        habits={habits}
+                        setHabits={setHabits}
+                        key={habit.name}
+                    />
+                );
             })}
         </div>
     );
 };
 
-export interface DaysOfTheWeekProps {
-    day: string;
-}
-
-export const DayOfTheWeek = ({ day }: DaysOfTheWeekProps): ReactElement => {
-    return <div className="dailyBoxContainer">{day}</div>;
+const HeaderRow = (): ReactElement => {
+    return (
+        <div className="row">
+            <div className="cellContainer firstColumn">Name</div>
+            {DaysOfTheWeek.map((day) => {
+                return (
+                    <div className="cellContainer" key={day}>
+                        {day}
+                    </div>
+                );
+            })}
+        </div>
+    );
 };

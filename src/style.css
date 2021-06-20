@@ -21,8 +21,34 @@ body {
 }
 
 .habitContainer {
+    width: 60%;
+}
+
+.callout {
+    background-color: rgba(235, 236, 237, 0.3);
+    flex-grow: 1;
+}
+
+.row {
+    margin-bottom: 7px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+}
+
+.cellContainer {
+    padding: 0px 10px;
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    min-width: 0;
+}
+/* 
+.cellContainer:hover {
+    background: rgba(55, 53, 47, 0.08);
+} */
+
+.firstColumn {
+    justify-content: flex-start;
 }
 
 .startButton {
@@ -59,63 +85,4 @@ body {
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
-}
-
-.tracker {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.dailyCheckBoxContainer {
-    display: flex;
-    flex-direction: column;
-    margin: 10px;
-    align-items: center;
-}
-
-.habitToTrack {
-    font-size: 17px;
-}
-
-.trackers {
-    display: flex;
-    flex-direction: row;
-}
-
-.row {
-    margin-bottom: 5px;
-}
-
-.nameColumn {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    margin-right: 10px;
-}
-
-.habitTrackers {
-    display: flex;
-    flex-direction: column;
-}
-
-.week {
-    display: flex;
-    justify-content: space-around;
-}
-
-.tracker {
-    display: flex;
-    justify-content: space-around;
-}
-
-.dailyBoxContainer {
-    margin: 0px 10px;
-    display: flex;
-    width: 100%;
-    justify-content: center;
-}
-
-.dailyCheckBox {
-    width: 100%;
 }

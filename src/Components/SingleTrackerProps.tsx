@@ -2,16 +2,30 @@ import React, { ReactElement } from "react";
 
 import { DayCheckBox } from "./DayCheckBox";
 import { DaysOfTheWeek } from "../Util/days";
+import { UpdateHabitProps } from "../Types/Habit";
 
-export interface SingleTrackerProps {
-    habit: string;
+export interface SingleTrackerProps extends UpdateHabitProps {
+    name: string;
 }
 
-export const SingleTracker = ({ habit }: SingleTrackerProps): ReactElement => {
+export const SingleTracker = ({
+    name,
+    habits,
+    setHabits,
+}: SingleTrackerProps): ReactElement => {
     return (
-        <div className="tracker row">
+        <div className="row">
+            <div className="cellContainer firstColumn">{name}</div>
             {DaysOfTheWeek.map((day) => {
-                return <DayCheckBox day={day} key={day} />;
+                return (
+                    <DayCheckBox
+                        name={name}
+                        habits={habits}
+                        setHabits={setHabits}
+                        day={day}
+                        key={day}
+                    />
+                );
             })}
         </div>
     );

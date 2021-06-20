@@ -4,7 +4,7 @@ import { HabitProperties } from "../Types/Habit";
 
 export interface StartNewProps {
     habits: HabitProperties[];
-    setHabitsToTrack: any;
+    setHabits: (h: HabitProperties[]) => void;
 }
 
 export const StartNew = (props: StartNewProps): ReactElement => {
@@ -23,20 +23,17 @@ export const StartNew = (props: StartNewProps): ReactElement => {
     );
 };
 
-const StartNewModal = ({
-    habits,
-    setHabitsToTrack,
-}: StartNewProps): ReactElement => {
-    const [newHabitValue, setNewHabitValue] = useState("");
+const StartNewModal = ({ habits, setHabits }: StartNewProps): ReactElement => {
+    const [newHabit, setNewHabit] = useState("");
 
     const createNewTracker = (event: FormEvent<HTMLElement>) => {
         event.preventDefault();
-        const newHabit = {
-            name: newHabitValue,
-            startDate: Date.now(),
+        const habit = {
+            name: newHabit,
             length: 0,
+            startDate: new Date(),
         };
-        setHabitsToTrack([...habits, newHabit]);
+        setHabits([...habits, habit]);
         close();
     };
 
@@ -55,9 +52,9 @@ const StartNewModal = ({
                         <input
                             type="text"
                             name="newHabitName"
-                            value={newHabitValue}
+                            value={newHabit}
                             onChange={(event) => {
-                                setNewHabitValue(event.target.value);
+                                setNewHabit(event.target.value);
                             }}
                         />
                     </label>
