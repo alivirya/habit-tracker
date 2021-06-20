@@ -17,7 +17,7 @@ export const StartNewModal = ({
         const newHabit = {
             name: habitName,
             weeklyCount: 0,
-            startDate: new Date(habitStartDate),
+            startDate: habitStartDate,
         };
         setHabits([...habits, newHabit]);
         close();

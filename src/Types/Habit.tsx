@@ -1,7 +1,9 @@
+import { DateTime } from "luxon";
+
 export interface HabitProperties {
     name: string;
     weeklyCount: number;
-    startDate: Date;
+    startDate: string;
 }
 
 export interface UpdateHabitProps {
