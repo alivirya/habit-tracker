@@ -1,7 +1,7 @@
 {
-    "name": "reminders",
+    "name": "habit-tracker",
     "version": "1.0.0",
-    "description": "A place to have aesthetic lovely pictures and also have reminders for myself",
+    "description": "A habit tracker extension",
     "main": "App.tsx",
     "type": "module",
     "watch": {
