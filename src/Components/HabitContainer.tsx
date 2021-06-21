@@ -25,7 +25,7 @@ export const HabitContainer = (): ReactElement => {
     return (
         <div className="habitContainer">
             {getCurrentDayText()}
-            <Callout habits={habits} />
+            {habits.length && <Callout habits={habits} />}
             <StartNew habits={habits} setHabits={setHabits} />
             <Trackers habits={habits} setHabits={setHabits} />
         </div>

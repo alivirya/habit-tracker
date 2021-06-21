@@ -1,8 +1,7 @@
-import { Days, HabitProperties } from "../Types/Habit";
 import React, { ReactElement } from "react";
 import { countDays, getDaysSinceText } from "../Util/dateUtil";
 
-import { DateTime } from "luxon";
+import { HabitProperties } from "../Types/Habit";
 
 export interface CalloutProps {
     habits: HabitProperties[];

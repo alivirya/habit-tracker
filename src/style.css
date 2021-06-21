@@ -46,9 +46,14 @@ body {
     padding: 0px 10px;
     display: flex;
     justify-content: center;
-    flex: 1;
+    flex: 2;
+    align-items: center;
     min-width: 0;
     text-overflow: ellipsis;
+}
+
+.lastCell {
+    flex-grow: 0;
 }
 /* 
 .cellContainer:hover {
@@ -63,13 +68,16 @@ body {
     height: 32px;
     font-size: 17px;
     color: rgba(55, 53, 47, 0.6);
+}
+
+button {
     border: none;
     background: transparent;
     transition: background 20ms ease-in 0s;
     cursor: pointer;
 }
 
-.startButton:hover {
+button:hover {
     background: rgba(55, 53, 47, 0.08);
 }
 

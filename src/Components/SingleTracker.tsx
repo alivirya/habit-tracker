@@ -14,6 +14,10 @@ export const SingleTracker = ({
 }: SingleTrackerProps): ReactElement => {
     const habit = getHabit(name, habits);
 
+    const deleteHabit = () => {
+        return setHabits(habits.filter((h) => h.name !== name));
+    };
+
     useEffect(() => {
         const startOfWeek = getStartOfWeek();
         chrome.storage.local.get(
@@ -44,6 +48,9 @@ export const SingleTracker = ({
                     />
                 );
             })}
+            <button className="cellContainer lastCell" onClick={deleteHabit}>
+                &times;
+            </button>
         </div>
     );
 };
