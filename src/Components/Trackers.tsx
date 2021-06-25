@@ -27,7 +27,7 @@ export const Trackers = ({
 
 const HeaderRow = (): ReactElement => {
     return (
-        <div className="row">
+        <div className="row headerRow">
             <div className="cellContainer firstColumn">Name</div>
             {DaysOfTheWeek.map((day) => {
                 return (

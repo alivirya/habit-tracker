@@ -15,8 +15,12 @@ export const getCurrentFormattedDate = (): string => {
     return DateTime.now().toFormat("yyyy'-'MM'-'dd");
 };
 
+export const getCurrentTimeText = (): string => {
+    return DateTime.now().toFormat("h':'mm':'ssa").toLowerCase();
+};
+
 export const getCurrentDayText = (): string => {
-    return DateTime.now().toFormat("'Today is' DDDD");
+    return DateTime.now().toFormat("DDDD");
 };
 
 export const getStartOfWeek = (): DateTime => {

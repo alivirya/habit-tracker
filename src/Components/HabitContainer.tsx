@@ -1,6 +1,6 @@
 import React, { ReactElement, useEffect, useState } from "react";
 
-import { Callout } from "./Callout";
+import { DateContainer } from "./DateContainer";
 import { HabitProperties } from "../Types/Habit";
 import { StartNew } from "./StartNew";
 import { Trackers } from "./Trackers";
@@ -24,8 +24,7 @@ export const HabitContainer = (): ReactElement => {
 
     return (
         <div className="habitContainer">
-            {getCurrentDayText()}
-            {habits.length && <Callout habits={habits} />}
+            <DateContainer />
             <StartNew habits={habits} setHabits={setHabits} />
             <Trackers habits={habits} setHabits={setHabits} />
         </div>

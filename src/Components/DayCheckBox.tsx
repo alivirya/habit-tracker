@@ -17,10 +17,11 @@ export const DayCheckBox = ({
     const onCheckboxClicked = () => {
         setIsChecked(!isChecked);
         setHabits(updateHabitLength(name, habits, !isChecked, day));
+        setCheckboxActive(name, day, !isChecked);
     };
 
     return (
-        <div className="cellContainer">
+        <button className="cellContainer" onClick={onCheckboxClicked}>
             <input
                 type="checkbox"
                 name={day}
@@ -29,7 +30,7 @@ export const DayCheckBox = ({
                 aria-label={day}
                 onClick={onCheckboxClicked}
             />
-        </div>
+        </button>
     );
 };
 
@@ -59,4 +60,11 @@ const updateHabitLength = (
         }
         return h;
     });
+};
+
+const setCheckboxActive = (name: string, day: string, active: boolean) => {
+    const dayCheckbox = document.getElementById(
+        `${name}${day}CheckBox`
+    ) as HTMLInputElement;
+    dayCheckbox.checked = active;
 };

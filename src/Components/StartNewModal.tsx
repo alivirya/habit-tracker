@@ -66,7 +66,7 @@ export const StartNewModal = ({
                             setHabitStartDate(event.target.value);
                         }}
                     />
-                    <input type="submit" value="Create" />
+                    <input type="submit" value="New" className="submitButton" />
                 </form>
             </div>
         </div>

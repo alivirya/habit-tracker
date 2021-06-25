@@ -1,5 +1,5 @@
 import "./style.css";
-import "@fontsource/source-serif-pro";
+import "@fontsource/lora";
 
 import React, { ReactElement } from "react";
 
