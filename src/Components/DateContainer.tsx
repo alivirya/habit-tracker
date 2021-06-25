@@ -6,6 +6,7 @@ export const DateContainer = (): ReactElement => {
     setInterval(() => {
         setDate(getCurrentTimeText());
     }, 1000);
+
     return (
         <div className="dateContainer">
             <div className="dateText">{date}</div>

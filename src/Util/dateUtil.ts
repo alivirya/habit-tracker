@@ -44,19 +44,18 @@ export const getDaysSinceText = (
 ): string => {
     const current = getTotalCount(weeklyCount);
     const start = DateTime.fromISO(startDate);
-    const diff = current.diff(start, ["years", "months", "weeks", "days"]);
-    const { years, months, weeks } = diff;
+    const diff = current.diff(start, ["years", "months", "days"]);
+    const { years, months } = diff;
     let { days } = diff;
     if (days < 0) {
         days = weeklyCount;
     }
 
-    const yearsText = years > 0 ? `${years} years, ` : "";
-    const monthsText = months > 0 ? `${months} months, ` : "";
-    const weeksText = weeks > 0 ? `${weeks} weeks, ` : "";
+    const yearsText = years > 0 ? `${years} years` : "";
+    const monthsText = months > 0 ? `${months} months` : "";
     const daysText = `${days} days`;
 
-    return `${yearsText}${monthsText}${weeksText}${daysText}`;
+    return `${yearsText} ${monthsText} ${daysText}`;
 };
 
 export const countDays = (days: Days): number => {

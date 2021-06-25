@@ -36,11 +36,11 @@ const GJ = ({ name, length, startDate }: GJProps): ReactElement => {
     // make it so the emoji is configurable?
 
     return (
-        <div className="dotdot">
-            <span role="img" aria-label="">
+        <div className="habitCelebration">
+            {/* <span role="img" aria-label="">
                 🎉
-            </span>
-            You have been <b>{name}</b> for {duration}!
+            </span> */}
+            <b>{name}</b>: {duration}
         </div>
     );
 };

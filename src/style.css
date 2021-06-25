@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 html,
 body,
 #root {
@@ -18,11 +22,23 @@ h1 {
 
 .app {
     height: 100%;
-    background-color: #fff;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
+}
+
+#root::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-image: url("https://images.unsplash.com/photo-1612373402999-42a50b77947b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3451&q=80");
+    background-size: cover;
+    opacity: 0.3;
 }
 
 .habitContainer {
@@ -36,21 +52,28 @@ h1 {
 }
 
 .dateText {
+    letter-spacing: 0.025em;
     font-size: 60px;
     font-weight: 700;
     color: #000;
 }
 
 .callout {
-    background-color: rgba(235, 236, 237, 0.3);
-    flex-grow: 1;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    background-color: rgba(255, 255, 255, 0.3);
     padding: 15px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-evenly;
+    letter-spacing: 0.025em;
+    font-size: 19px;
 }
 
-.dotdot {
+.habitCelebration {
     line-height: 30px;
+    padding: 0px 20px;
 }
 
 .row {
@@ -67,10 +90,13 @@ h1 {
     min-width: 0;
     text-overflow: ellipsis;
     cursor: pointer;
+    background-color: transparent;
+    transition: background 20ms ease-in 0s;
 }
 
-.cellContainer:hover {
-    background: rgba(55, 53, 47, 0.08);
+.cellContainer:hover,
+button:hover {
+    background: rgba(255, 255, 255, 0.8);
 }
 
 .lastCell {
@@ -91,20 +117,19 @@ h1 {
 }
 
 .startButton {
-    height: 32px;
-    font-size: 17px;
+    text-align: left;
+    padding: 8px 10px;
+    font-size: 19px;
+    background-color: rgba(255, 255, 255, 0.3);
+    margin-bottom: 10px;
+    border-radius: 2px;
+    width: 200px;
 }
 
 button {
     font-family: "Lora";
     border: none;
-    background: rgba(255, 255, 255, 0.8);
-    transition: background 20ms ease-in 0s;
     cursor: pointer;
-}
-
-button:hover {
-    background: rgba(55, 53, 47, 0.08);
 }
 
 .startNewModal {
@@ -182,6 +207,50 @@ input[type="date"]:focus {
     font-size: 20px;
 }
 
-.close:hover {
-    background: rgba(55, 53, 47, 0.08);
+.checkboxContainer {
+    display: flex;
+    cursor: pointer;
+    font-size: 22px;
+}
+
+.checkboxContainer input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.customCheckbox {
+    height: 17px;
+    width: 17px;
+    background-color: #fff;
+    border: 1px solid #000;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.customCheckbox:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.checkboxContainer input:checked ~ .customCheckbox:after {
+    display: block;
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkboxContainer input:checked ~ .customCheckbox {
+    background-color: #2caadc;
+}
+
+/* Style the checkmark/indicator */
+.checkboxContainer .customCheckbox:after {
+    width: 3px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+    margin-left: 5px;
 }

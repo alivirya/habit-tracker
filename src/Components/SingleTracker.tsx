@@ -55,7 +55,8 @@ export const SingleTracker = ({
     );
 };
 
-const setCheckboxes = (name: string, habit: HabitProperties) => {
+const setCheckboxes = (name: string, habit?: HabitProperties) => {
+    if (!habit) return;
     const days = Object.keys(habit.weeklyTracker);
     days.forEach((day) => {
         const dayCheckbox = document.getElementById(
