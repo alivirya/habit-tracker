@@ -18,7 +18,7 @@ export const StartNew = (props: StartNewProps): ReactElement => {
         <div>
             <StartNewModal {...props} />
             <button className="startButton" onClick={newHabit}>
-                + Start new habit
+                + Start New Habit
             </button>
         </div>
     );

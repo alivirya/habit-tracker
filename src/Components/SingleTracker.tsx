@@ -76,6 +76,7 @@ const refreshCheckboxes = (name: string, startOfWeek: string) => {
     }
 };
 
+// TODO: this needs to be moved to a habit util
 const refreshHabitWeek = (
     habitName: string,
     habits: HabitProperties[]

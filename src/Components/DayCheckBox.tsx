@@ -39,6 +39,8 @@ export const DayCheckBox = ({
     );
 };
 
+// TODO: These bottom two need to be refactored but also moved into a habit util
+
 export const getHabit = (
     name: string,
     habits: HabitProperties[]
