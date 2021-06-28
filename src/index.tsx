@@ -27,7 +27,7 @@ const App = (): ReactElement => {
     return (
         <React.StrictMode>
             <div className="app">
-                <Callout habits={habits} />
+                {habits.length !== 0 && <Callout habits={habits} />}
                 <HabitContainer habits={habits} setHabits={setHabits} />
             </div>
         </React.StrictMode>

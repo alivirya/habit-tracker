@@ -1,7 +1,9 @@
 import { DayCheckBox, getHabit } from "./DayCheckBox";
 import { DaysOfTheWeek, getStartOfWeek } from "../Util/dateUtil";
-import { HabitProperties, UpdateHabitProps } from "../Types/Habit";
+import { HabitAction, HabitProperties, UpdateHabitProps } from "../Types/Habit";
 import React, { ReactElement, useEffect } from "react";
+
+import { HabitModal } from "./HabitModal";
 
 export interface SingleTrackerProps extends UpdateHabitProps {
     name: string;
@@ -16,6 +18,36 @@ export const SingleTracker = ({
 
     const deleteHabit = () => {
         return setHabits(habits.filter((h) => h.name !== name));
+    };
+
+    const openModal = () => {
+        const modal = document.getElementById(`update${name}Modal`);
+        if (modal === null) return;
+        modal.style.display = "block";
+    };
+
+    const closeModal = () => {
+        const modal = document.getElementById(`update${name}Modal`);
+        if (modal === null) return;
+        modal.style.display = "none";
+    };
+
+    const updateHabitInformation = (
+        newHabitName: string,
+        newHabitStartDate: string
+    ) => {
+        const updatedHabits = habits.map((h) => {
+            if (h.name === name) {
+                return {
+                    name: newHabitName,
+                    startDate: newHabitStartDate,
+                    weeklyTracker: h.weeklyTracker,
+                };
+            }
+            return h;
+        });
+        setHabits(updatedHabits);
+        closeModal();
     };
 
     useEffect(() => {
@@ -36,7 +68,16 @@ export const SingleTracker = ({
 
     return (
         <div className="row">
-            <div className="cellContainer firstColumn">{name}</div>
+            <HabitModal
+                onHabitEdit={updateHabitInformation}
+                close={closeModal}
+                action={HabitAction.UPDATE}
+                currentName={name}
+                currentStartDate={habit?.startDate}
+            />
+            <button className="cellContainer firstColumn" onClick={openModal}>
+                {name}
+            </button>
             {DaysOfTheWeek.map((day) => {
                 return (
                     <DayCheckBox

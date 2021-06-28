@@ -1,8 +1,8 @@
 {
     "manifest_version": 2,
 
-    "name": "My Extension",
-    "description": "This extension is a starting point to create a real Chrome extension",
+    "name": "Audo",
+    "description": "Habit tracker extension",
     "version": "0.0.1",
     "permissions": ["storage"],
 

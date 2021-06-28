@@ -19,3 +19,8 @@ export interface UpdateHabitProps {
     habits: HabitProperties[];
     setHabits: (h: HabitProperties[]) => void;
 }
+
+export enum HabitAction {
+    CREATE = "create",
+    UPDATE = "update",
+}

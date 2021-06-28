@@ -1,9 +1,9 @@
-import { HabitProperties, UpdateHabitProps } from "../Types/Habit";
-import React, { ReactElement, useEffect, useState } from "react";
+import React, { ReactElement } from "react";
 
 import { DateContainer } from "./DateContainer";
 import { StartNew } from "./StartNew";
 import { Trackers } from "./Trackers";
+import { UpdateHabitProps } from "../Types/Habit";
 
 export const HabitContainer = ({
     habits,
