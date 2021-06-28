@@ -87,7 +87,6 @@ h1 {
     align-items: center;
     min-width: 0;
     text-overflow: ellipsis;
-    cursor: pointer;
     background-color: transparent;
     transition: background 20ms ease-in 0s;
 }

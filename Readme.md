@@ -4,11 +4,12 @@ This is just a project of mine as I'm dissatisfied with the way I'm tracking my 
 
 ## Ideal Features
 
--   Ability to create new habit trackers
--   For habit data to be stored somewhere (local storage maybe? too much work to do it elsewhere)
--   For there to be a count of how long it's been since you've started the habit
--   Refresh every week
--   When you click on one of the habits, open a modal that makes it configurable
+[x] Ability to create new habit trackers
+[x] For habit data to be stored somewhere (local storage maybe? too much work to do it elsewhere)
+[x] For there to be a count of how long it's been since you've started the habit
+[] Refresh every week - need to check this one
+[x] When you click on one of the habits, open a modal that makes it configurable
+[] A way to have a list of backgrounds to iterate through
 
 ## Technical thoughts
 
@@ -17,7 +18,6 @@ This is just a project of mine as I'm dissatisfied with the way I'm tracking my 
 
 ## Nice to have
 
--   Ability to change background of extension
 -   Ability to make notes on what I am doing to implement these habits
 
 ## Todos
