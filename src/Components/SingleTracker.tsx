@@ -1,7 +1,7 @@
 import { DayCheckBox, getHabit } from "./DayCheckBox";
 import { DaysOfTheWeek, getStartOfWeek } from "../Util/dateUtil";
 import { HabitAction, HabitProperties, UpdateHabitProps } from "../Types/Habit";
-import React, { ReactElement, useEffect } from "react";
+import React, { MouseEvent, ReactElement, useEffect } from "react";
 
 import { HabitModal } from "./HabitModal";
 
@@ -16,7 +16,8 @@ export const SingleTracker = ({
 }: SingleTrackerProps): ReactElement => {
     const habit = getHabit(name, habits);
 
-    const deleteHabit = () => {
+    const deleteHabit = (event: MouseEvent) => {
+        event.preventDefault();
         setHabits(habits.filter((h) => h.name !== name));
     };
 
@@ -90,9 +91,6 @@ export const SingleTracker = ({
                     />
                 );
             })}
-            <button className="cellContainer lastCell" onClick={deleteHabit}>
-                &times;
-            </button>
         </div>
     );
 };

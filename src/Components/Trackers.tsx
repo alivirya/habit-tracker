@@ -36,7 +36,6 @@ const HeaderRow = (): ReactElement => {
                     </div>
                 );
             })}
-            <div className="cellContainer lastCell" />
         </div>
     );
 };

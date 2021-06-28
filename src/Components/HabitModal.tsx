@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from "react";
+import React, { MouseEvent, ReactElement, useState } from "react";
 
 import { HabitAction } from "../Types/Habit";
 import { getCurrentFormattedDate } from "../Util/dateUtil";
@@ -9,7 +9,7 @@ export interface HabitEditModalProps {
     close: () => void;
     currentName?: string;
     currentStartDate?: string;
-    deleteHabit?: () => void;
+    deleteHabit?: (e: MouseEvent) => void;
 }
 
 export const HabitModal = ({
@@ -71,10 +71,7 @@ export const HabitModal = ({
                     {deleteHabit && (
                         <button
                             className="modalButton deleteModalButton"
-                            onClick={(e) => {
-                                e.preventDefault();
-                                deleteHabit();
-                            }}
+                            onClick={deleteHabit}
                         >
                             Delete
                         </button>

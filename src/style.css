@@ -97,10 +97,6 @@ button:hover {
     background: rgba(255, 255, 255, 0.8);
 }
 
-.lastCell {
-    flex-grow: 0.3;
-}
-
 .firstColumn {
     font-size: 17px;
     justify-content: flex-start;
