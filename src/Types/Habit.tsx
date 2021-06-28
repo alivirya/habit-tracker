@@ -21,6 +21,6 @@ export interface UpdateHabitProps {
 }
 
 export enum HabitAction {
-    CREATE = "create",
-    UPDATE = "update",
+    CREATE = "Create",
+    UPDATE = "Update",
 }

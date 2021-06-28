@@ -179,7 +179,7 @@ input[type="date"]:focus {
     outline: 0;
 }
 
-.submitButton {
+.modalButton {
     border: none;
     border-radius: 2px;
     height: 3rem;
@@ -189,10 +189,19 @@ input[type="date"]:focus {
     color: #fff;
     letter-spacing: 1px;
     cursor: pointer;
+    margin-bottom: 10px;
 }
 
-.submitButton:hover {
+.modalButton:hover {
     background-color: #323232;
+}
+
+.deleteModalButton {
+    background-color: #c51e3a;
+}
+
+.deleteModalButton:hover {
+    background-color: #dc7888;
 }
 
 .close {

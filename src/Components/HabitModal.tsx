@@ -9,6 +9,7 @@ export interface HabitEditModalProps {
     close: () => void;
     currentName?: string;
     currentStartDate?: string;
+    deleteHabit?: () => void;
 }
 
 export const HabitModal = ({
@@ -17,6 +18,7 @@ export const HabitModal = ({
     close,
     currentName,
     currentStartDate,
+    deleteHabit,
 }: HabitEditModalProps): ReactElement => {
     const [habitName, setHabitName] = useState(currentName || "");
     const [habitStartDate, setHabitStartDate] = useState(
@@ -25,10 +27,14 @@ export const HabitModal = ({
 
     // Learnings - this caches, so the id needs to change for react to realize it nees to update
     return (
-        <div className="modal" id={`${action}${currentName}Modal`}>
+        <div className="modal" id={`${action}${currentName ?? ""}Modal`}>
             <div className="modalContent">
                 <div className="modalHeader">
-                    <h1>New Habit</h1>
+                    <h1>
+                        {action === HabitAction.CREATE
+                            ? "New Habit"
+                            : "Edit Habit"}
+                    </h1>
                     <button className="close" onClick={close}>
                         &times;
                     </button>
@@ -57,7 +63,22 @@ export const HabitModal = ({
                             setHabitStartDate(event.target.value);
                         }}
                     />
-                    <input type="submit" value="New" className="submitButton" />
+                    <input
+                        type="submit"
+                        value={action}
+                        className="modalButton"
+                    />
+                    {deleteHabit && (
+                        <button
+                            className="modalButton deleteModalButton"
+                            onClick={(e) => {
+                                e.preventDefault();
+                                deleteHabit();
+                            }}
+                        >
+                            Delete
+                        </button>
+                    )}
                 </form>
             </div>
         </div>

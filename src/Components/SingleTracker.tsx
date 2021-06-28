@@ -17,17 +17,17 @@ export const SingleTracker = ({
     const habit = getHabit(name, habits);
 
     const deleteHabit = () => {
-        return setHabits(habits.filter((h) => h.name !== name));
+        setHabits(habits.filter((h) => h.name !== name));
     };
 
     const openModal = () => {
-        const modal = document.getElementById(`update${name}Modal`);
+        const modal = document.getElementById(`Update${name}Modal`);
         if (modal === null) return;
         modal.style.display = "block";
     };
 
     const closeModal = () => {
-        const modal = document.getElementById(`update${name}Modal`);
+        const modal = document.getElementById(`Update${name}Modal`);
         if (modal === null) return;
         modal.style.display = "none";
     };
@@ -74,6 +74,7 @@ export const SingleTracker = ({
                 action={HabitAction.UPDATE}
                 currentName={name}
                 currentStartDate={habit?.startDate}
+                deleteHabit={deleteHabit}
             />
             <button className="cellContainer firstColumn" onClick={openModal}>
                 {name}
