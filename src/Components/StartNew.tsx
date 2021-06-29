@@ -9,13 +9,13 @@ export const StartNew = ({
 }: UpdateHabitProps): ReactElement => {
     const openModal = () => {
         const modal = document.getElementById("CreateModal");
-        if (modal === null) return;
+        if (!modal) return;
         modal.style.display = "block";
     };
 
     const closeModal = () => {
         const modal = document.getElementById("CreateModal");
-        if (modal === null) return;
+        if (!modal) return;
         modal.style.display = "none";
     };
 

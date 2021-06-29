@@ -119,6 +119,7 @@ button:hover {
 }
 
 button {
+    background-color: transparent;
     font-family: "Lora";
     border: none;
     cursor: pointer;
@@ -192,6 +193,7 @@ input[type="date"]:focus {
 }
 
 .deleteModalButton {
+    font-family: "Arial";
     background-color: #c51e3a;
 }
 
@@ -259,4 +261,13 @@ input[type="date"]:focus {
     border-width: 0 3px 3px 0;
     transform: rotate(45deg);
     margin-left: 5px;
+}
+
+.backgroundButton {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 8px;
+    margin: 0px 0px 15px 15px;
+    line-height: 0;
 }

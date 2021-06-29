@@ -25,6 +25,7 @@ export const HabitModal = ({
         currentStartDate || getCurrentFormattedDate()
     );
 
+    // TODO: make all text go to an intl thing?
     // Learnings - this caches, so the id needs to change for react to realize it nees to update
     return (
         <div className="modal" id={`${action}${currentName ?? ""}Modal`}>
