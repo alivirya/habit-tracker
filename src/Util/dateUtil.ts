@@ -15,6 +15,10 @@ export const getCurrentFormattedDate = (): string => {
     return DateTime.now().toISODate();
 };
 
+export const getCurrentDateOnly = (): DateTime => {
+    return DateTime.fromISO(DateTime.now().toISODate());
+};
+
 export const getCurrentTimeText = (): string => {
     return DateTime.now().toFormat("h':'mm':'ssa").toLowerCase();
 };
@@ -29,22 +33,20 @@ export const getStartOfWeek = (date: DateTime): DateTime => {
     return date.minus({ days: day });
 };
 
-export const getTotalCount = (weeklyCount: number): DateTime => {
-    const currentBeforeWeek = getStartOfWeek();
-
-    return currentBeforeWeek.plus({ days: weeklyCount });
-};
-
 export const getDaysSinceText = (
     startDate: string,
     weeklyCount: number
 ): string => {
-    const current = getTotalCount(weeklyCount);
+    const today = getCurrentDateOnly();
+    let startOfWeek = getStartOfWeek(today);
     const start = DateTime.fromISO(startDate);
-    const diff = current.diff(start, ["years", "months", "days"]);
+    if (startOfWeek > start) {
+        startOfWeek = startOfWeek.plus({ days: weeklyCount });
+    }
+    const diff = startOfWeek.diff(start, ["years", "months", "days"]);
     const { years, months } = diff;
     let { days } = diff;
-    if (days < 0) {
+    if (days <= 0) {
         days = weeklyCount;
     }
 

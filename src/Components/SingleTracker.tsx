@@ -1,5 +1,9 @@
 import { DayCheckBox, getHabit } from "./DayCheckBox";
-import { DaysOfTheWeek, getStartOfWeek } from "../Util/dateUtil";
+import {
+    DaysOfTheWeek,
+    getCurrentDateOnly,
+    getStartOfWeek,
+} from "../Util/dateUtil";
 import { HabitAction, HabitProperties, UpdateHabitProps } from "../Types/Habit";
 import React, { MouseEvent, ReactElement, useEffect } from "react";
 
@@ -52,7 +56,7 @@ export const SingleTracker = ({
     };
 
     useEffect(() => {
-        const startOfWeek = getStartOfWeek();
+        const startOfWeek = getStartOfWeek(getCurrentDateOnly());
         chrome.storage.local.get(
             "currentWeek",
             ({ currentWeek }: { [key: string]: string }) => {
