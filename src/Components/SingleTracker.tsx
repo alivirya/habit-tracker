@@ -6,8 +6,10 @@ import {
 } from "../Util/dateUtil";
 import { HabitAction, HabitProperties, UpdateHabitProps } from "../Types/Habit";
 import React, { MouseEvent, ReactElement, useEffect } from "react";
+import { closeModal, openModal } from "../Util/modalUtil";
 
 import { HabitModal } from "./HabitModal";
+import { refreshHabitWeek } from "../Util/habitUtil";
 
 export interface SingleTrackerProps extends UpdateHabitProps {
     name: string;
@@ -25,16 +27,25 @@ export const SingleTracker = ({
         setHabits(habits.filter((h) => h.name !== name));
     };
 
-    const openModal = () => {
-        const modal = document.getElementById(`Update${name}Modal`);
-        if (modal === null) return;
-        modal.style.display = "block";
+    const setCheckboxes = (name: string, habit?: HabitProperties) => {
+        if (!habit) return;
+        const days = Object.keys(habit.weeklyTracker);
+        days.forEach((day) => {
+            const dayCheckbox = document.getElementById(
+                `${name}${day}CheckBox`
+            ) as HTMLInputElement;
+            dayCheckbox.checked = habit.weeklyTracker[day];
+        });
     };
 
-    const closeModal = () => {
-        const modal = document.getElementById(`Update${name}Modal`);
-        if (modal === null) return;
-        modal.style.display = "none";
+    const refreshCheckboxes = (name: string, startOfWeek: string) => {
+        chrome.storage.local.set({ currentWeek: startOfWeek });
+        const dailyCheckBoxes = document.getElementsByClassName(
+            `${name}dailyCheckBox`
+        ) as HTMLCollectionOf<HTMLInputElement>;
+        for (const checkbox of dailyCheckBoxes) {
+            checkbox.checked = false;
+        }
     };
 
     const updateHabitInformation = (
@@ -52,7 +63,7 @@ export const SingleTracker = ({
             return h;
         });
         setHabits(updatedHabits);
-        closeModal();
+        closeModal(`Update${name}Modal`);
     };
 
     useEffect(() => {
@@ -75,13 +86,20 @@ export const SingleTracker = ({
         <div className="row">
             <HabitModal
                 onHabitEdit={updateHabitInformation}
-                close={closeModal}
+                close={() => {
+                    closeModal(`Update${name}Modal`);
+                }}
                 action={HabitAction.UPDATE}
                 currentName={name}
                 currentStartDate={habit?.startDate}
                 deleteHabit={deleteHabit}
             />
-            <button className="cellContainer firstColumn" onClick={openModal}>
+            <button
+                className="cellContainer firstColumn"
+                onClick={() => {
+                    openModal(`Update${name}Modal`);
+                }}
+            >
                 {name}
             </button>
             {DaysOfTheWeek.map((day) => {
@@ -97,50 +115,4 @@ export const SingleTracker = ({
             })}
         </div>
     );
-};
-
-const setCheckboxes = (name: string, habit?: HabitProperties) => {
-    if (!habit) return;
-    const days = Object.keys(habit.weeklyTracker);
-    days.forEach((day) => {
-        const dayCheckbox = document.getElementById(
-            `${name}${day}CheckBox`
-        ) as HTMLInputElement;
-        dayCheckbox.checked = habit.weeklyTracker[day];
-    });
-};
-
-const refreshCheckboxes = (name: string, startOfWeek: string) => {
-    chrome.storage.local.set({ currentWeek: startOfWeek });
-    const dailyCheckBoxes = document.getElementsByClassName(
-        `${name}dailyCheckBox`
-    ) as HTMLCollectionOf<HTMLInputElement>;
-    for (const checkbox of dailyCheckBoxes) {
-        checkbox.checked = false;
-    }
-};
-
-// TODO: this needs to be moved to a habit util
-const refreshHabitWeek = (
-    habitName: string,
-    habits: HabitProperties[]
-): HabitProperties[] => {
-    return habits.map((h) => {
-        if (h.name === habitName) {
-            return {
-                name: h.name,
-                startDate: h.startDate,
-                weeklyTracker: {
-                    Monday: false,
-                    Tuesday: false,
-                    Wednesday: false,
-                    Thursday: false,
-                    Friday: false,
-                    Saturday: false,
-                    Sunday: false,
-                },
-            };
-        }
-        return h;
-    });
 };

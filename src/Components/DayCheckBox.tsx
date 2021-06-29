@@ -24,14 +24,16 @@ export const DayCheckBox = ({
 
     return (
         <button className="cellContainer" onClick={onCheckboxClicked}>
-            <label className="checkboxContainer">
+            <label
+                className="checkboxContainer"
+                htmlFor={`${name}${day}CheckBox`}
+            >
                 <input
                     type="checkbox"
                     name={day}
                     className={`${name}dailyCheckBox`}
                     id={`${name}${day}CheckBox`}
                     aria-label={day}
-                    onClick={onCheckboxClicked}
                 />
                 <span className="customCheckbox" />
             </label>
