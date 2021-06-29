@@ -12,7 +12,7 @@ export const DaysOfTheWeek = [
 ];
 
 export const getCurrentFormattedDate = (): string => {
-    return DateTime.now().toFormat("yyyy'-'MM'-'dd");
+    return DateTime.now().toISODate();
 };
 
 export const getCurrentTimeText = (): string => {
@@ -23,13 +23,10 @@ export const getCurrentDayText = (): string => {
     return DateTime.now().toFormat("DDDD");
 };
 
-export const getStartOfWeek = (): DateTime => {
-    // TODO: This is very hacky - should change this
-    const today = DateTime.fromISO(getCurrentFormattedDate());
-    const day = today.weekday;
-    const dayOffsetSinceMonday = day !== 1 ? day - 1 : 0;
+export const getStartOfWeek = (date: DateTime): DateTime => {
+    const day = date.weekday;
 
-    return today.minus({ days: dayOffsetSinceMonday });
+    return date.minus({ days: day });
 };
 
 export const getTotalCount = (weeklyCount: number): DateTime => {
