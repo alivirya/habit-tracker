@@ -11,6 +11,12 @@ export const DaysOfTheWeek = [
     "Sunday",
 ];
 
+export interface LengthOfTime {
+    years: number;
+    months: number;
+    days: number;
+}
+
 export const getCurrentFormattedDate = (): string => {
     return DateTime.now().toISODate();
 };
@@ -33,23 +39,40 @@ export const getStartOfWeek = (date: DateTime): DateTime => {
     return date.minus({ days: day });
 };
 
+export const lengthOfHabit = (
+    startOfWeek: DateTime,
+    startDate: DateTime,
+    weeklyCount: number
+): LengthOfTime => {
+    if (startDate >= startOfWeek) {
+        return {
+            years: 0,
+            months: 0,
+            days: weeklyCount,
+        };
+    }
+    const timeDoingHabit = startOfWeek.plus({ days: weeklyCount });
+    const lengthOfTime = timeDoingHabit.diff(startDate, [
+        "years",
+        "months",
+        "days",
+    ]);
+    return lengthOfTime;
+};
+
 export const getDaysSinceText = (
-    startDate: string,
+    habitStartDate: string,
     weeklyCount: number
 ): string => {
     const today = getCurrentDateOnly();
-    let startOfWeek = getStartOfWeek(today);
-    const start = DateTime.fromISO(startDate);
-    if (startOfWeek > start) {
-        startOfWeek = startOfWeek.plus({ days: weeklyCount });
-    }
-    const diff = startOfWeek.diff(start, ["years", "months", "days"]);
-    const { years, months } = diff;
-    let { days } = diff;
-    if (days <= 0) {
-        days = weeklyCount;
-    }
+    const startOfWeek = getStartOfWeek(today);
+    const startDate = DateTime.fromISO(habitStartDate);
 
+    const { years, months, days } = lengthOfHabit(
+        startOfWeek,
+        startDate,
+        weeklyCount
+    );
     const yearsText = years > 0 ? `${years} years` : "";
     const monthsText = months > 0 ? `${months} months` : "";
     const daysText = `${days} days`;
