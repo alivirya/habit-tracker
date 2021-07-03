@@ -7,8 +7,7 @@ export const refreshHabitWeek = (
     return habits.map((h) => {
         if (h.name === habitName) {
             return {
-                name: h.name,
-                startDate: h.startDate,
+                ...h,
                 weeklyTracker: {
                     Monday: false,
                     Tuesday: false,
@@ -17,6 +16,33 @@ export const refreshHabitWeek = (
                     Friday: false,
                     Saturday: false,
                     Sunday: false,
+                },
+            };
+        }
+        return h;
+    });
+};
+
+export const getHabit = (
+    name: string,
+    habits: HabitProperties[]
+): HabitProperties | undefined => {
+    return habits.find((h) => h.name === name);
+};
+
+export const updateHabitLength = (
+    habitName: string,
+    habits: HabitProperties[],
+    isChecked: boolean,
+    day: string
+): HabitProperties[] => {
+    return habits.map((h) => {
+        if (h.name === habitName) {
+            return {
+                ...h,
+                weeklyTracker: {
+                    ...h.weeklyTracker,
+                    [day]: isChecked,
                 },
             };
         }

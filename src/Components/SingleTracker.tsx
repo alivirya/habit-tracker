@@ -1,4 +1,3 @@
-import { DayCheckBox, getHabit } from "./DayCheckBox";
 import {
     DaysOfTheWeek,
     getCurrentDateOnly,
@@ -7,9 +6,10 @@ import {
 import { HabitAction, HabitProperties, UpdateHabitProps } from "../Types/Habit";
 import React, { MouseEvent, ReactElement, useEffect } from "react";
 import { closeModal, openModal } from "../Util/modalUtil";
+import { getHabit, refreshHabitWeek } from "../Util/habitUtil";
 
+import { DayCheckBox } from "./DayCheckBox";
 import { HabitModal } from "./HabitModal";
-import { refreshHabitWeek } from "../Util/habitUtil";
 
 export interface SingleTrackerProps extends UpdateHabitProps {
     name: string;

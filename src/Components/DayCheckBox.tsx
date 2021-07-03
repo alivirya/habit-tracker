@@ -1,5 +1,7 @@
-import { HabitProperties, UpdateHabitProps } from "../Types/Habit";
 import React, { ReactElement, useState } from "react";
+import { getHabit, updateHabitLength } from "../Util/habitUtil";
+
+import { UpdateHabitProps } from "../Types/Habit";
 
 export interface DayCheckBoxProps extends UpdateHabitProps {
     name: string;
@@ -15,6 +17,13 @@ export const DayCheckBox = ({
     const [isChecked, setIsChecked] = useState(
         habit && habit.weeklyTracker[day]
     );
+
+    const setCheckboxActive = (name: string, day: string, active: boolean) => {
+        const dayCheckbox = document.getElementById(
+            `${name}${day}CheckBox`
+        ) as HTMLInputElement;
+        dayCheckbox.checked = active;
+    };
 
     const onCheckboxClicked = () => {
         setIsChecked(!isChecked);
@@ -39,41 +48,4 @@ export const DayCheckBox = ({
             </label>
         </button>
     );
-};
-
-// TODO: These bottom two need to be refactored but also moved into a habit util
-
-export const getHabit = (
-    name: string,
-    habits: HabitProperties[]
-): HabitProperties | undefined => {
-    return habits.find((h) => h.name === name);
-};
-
-const updateHabitLength = (
-    habitName: string,
-    habits: HabitProperties[],
-    isChecked: boolean,
-    day: string
-): HabitProperties[] => {
-    return habits.map((h) => {
-        if (h.name === habitName) {
-            return {
-                name: h.name,
-                startDate: h.startDate,
-                weeklyTracker: {
-                    ...h.weeklyTracker,
-                    [day]: isChecked,
-                },
-            };
-        }
-        return h;
-    });
-};
-
-const setCheckboxActive = (name: string, day: string, active: boolean) => {
-    const dayCheckbox = document.getElementById(
-        `${name}${day}CheckBox`
-    ) as HTMLInputElement;
-    dayCheckbox.checked = active;
 };
