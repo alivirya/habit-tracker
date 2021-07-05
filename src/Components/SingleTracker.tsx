@@ -67,11 +67,11 @@ export const SingleTracker = ({
     };
 
     useEffect(() => {
-        const startOfWeek = getStartOfWeek(getCurrentDateOnly());
+        const startOfCurrentWeek = getStartOfWeek(getCurrentDateOnly());
         chrome.storage.local.get(
             "currentWeek",
             ({ currentWeek }: { [key: string]: string }) => {
-                const startOfWeekInISO = startOfWeek.toISO();
+                const startOfWeekInISO = startOfCurrentWeek.toISODate();
                 if (currentWeek === startOfWeekInISO) {
                     setCheckboxes(name, habit);
                     return;
