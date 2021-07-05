@@ -4,17 +4,18 @@ This is just a project of mine as I'm dissatisfied with the way I'm tracking my 
 
 ## Ideal Features
 
-- [x] Ability to create new habit trackers
-- [x] For habit data to be stored somewhere (local storage maybe? too much work to do it elsewhere)
-- [x] For there to be a count of how long it's been since you've started the habit
-- [ ] Refresh every week - need to check this one
-- [x] When you click on one of the habits, open a modal that makes it configurable
-- [ ] A way to have a list of backgrounds to iterate through
+-   [x] Ability to create new habit trackers
+-   [x] For habit data to be stored somewhere (local storage maybe? too much work to do it elsewhere)
+-   [x] For there to be a count of how long it's been since you've started the habit
+-   [ ] Refresh every week - need to check this one
+-   [x] When you click on one of the habits, open a modal that makes it configurable
+-   [ ] A way to have a list of backgrounds to iterate through
+-   [ ] Have something for reminders as well?
 
 ## Technical thoughts
 
 -   A better way to update arrays? Not sure if there is something in typescript to make it infer - I think there is something that was done at work, should look at this
--   A better way to deal with dates?
+-   A better way to deal with dates? Ah improved a little bit but still kind of annoying
 
 ## Nice to have
 
