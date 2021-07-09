@@ -215,6 +215,23 @@ input[type="date"]:focus {
     color: #fff;
 }
 
+.backgroundModal {
+    width: 60%;
+}
+
+.dragDropBackground {
+    border: 2px dashed rgba(0, 0, 0, 0.6);
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(232, 232, 232, 1);
+}
+
+div[dragged="true"] {
+    background-color: rgba(255, 255, 255, 1);
+}
+
 .checkboxContainer {
     display: flex;
     cursor: pointer;
@@ -236,24 +253,20 @@ input[type="date"]:focus {
     border: 1px solid #000;
 }
 
-/* Create the checkmark/indicator (hidden when not checked) */
 .customCheckbox:after {
     content: "";
     position: absolute;
     display: none;
 }
 
-/* Show the checkmark when checked */
 .checkboxContainer input:checked ~ .customCheckbox:after {
     display: block;
 }
 
-/* When the checkbox is checked, add a blue background */
 .checkboxContainer input:checked ~ .customCheckbox {
     background-color: #2caadc;
 }
 
-/* Style the checkmark/indicator */
 .checkboxContainer .customCheckbox:after {
     width: 3px;
     height: 10px;

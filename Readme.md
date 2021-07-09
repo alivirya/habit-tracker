@@ -11,6 +11,7 @@ This is just a project of mine as I'm dissatisfied with the way I'm tracking my 
 -   [x] When you click on one of the habits, open a modal that makes it configurable
 -   [ ] A way to have a list of backgrounds to iterate through
 -   [ ] Have something for reminders as well?
+-   [ ] Have a way that determines whether to have the count done by week/day? Also determine how many tick marks need to be done per week for the habit to be carried over
 
 ## Technical thoughts
 
