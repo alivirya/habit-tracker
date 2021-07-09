@@ -15,6 +15,8 @@ export const BackgroundModal = (): ReactElement => {
         if (dragArea === null) return;
         dragArea.removeAttribute("dragged");
         dragArea.innerText = "Upload files";
+        const dis = document.getElementById("displ") as HTMLImageElement;
+        dis.src = URL.createObjectURL(fileList[0]);
     };
 
     const handleDraggedFiles = (event: React.DragEvent) => {
@@ -56,6 +58,7 @@ export const BackgroundModal = (): ReactElement => {
                 >
                     Upload File
                 </div>
+                <img src="" alt="" id="displ" />
             </div>
         </div>
     );
