@@ -2,7 +2,7 @@
     display: none;
     position: fixed;
     z-index: 1;
-    padding-top: 250px;
+    padding-top: 200px;
     left: 0;
     top: 0;
     width: 100%;
@@ -28,6 +28,7 @@
 }
 
 .modalButton {
+    font-family: "Arial";
     border: none;
     border-radius: 2px;
     height: 3rem;
@@ -45,7 +46,6 @@
 }
 
 .deleteModalButton {
-    font-family: "Arial";
     background-color: #c51e3a;
 }
 
@@ -69,6 +69,10 @@
 
 .backgroundModal {
     width: 60%;
+}
+
+#backgroundModal {
+    padding-top: 100px;
 }
 
 .dragDropBackground {

@@ -1,5 +1,7 @@
 import React, { ReactElement } from "react";
 
+import { WheelOfImages } from "../OtherComponents/WheelOfImages";
+
 export const BackgroundModal = (): ReactElement => {
     const close = () => {
         const backgroundModal = document.getElementById("backgroundModal");
@@ -15,8 +17,8 @@ export const BackgroundModal = (): ReactElement => {
         if (dragArea === null) return;
         dragArea.removeAttribute("dragged");
         dragArea.innerText = "Upload files";
-        const dis = document.getElementById("displ") as HTMLImageElement;
-        dis.src = URL.createObjectURL(fileList[0]);
+        // const dis = document.getElementById("displ") as HTMLImageElement;
+        // dis.src = URL.createObjectURL(fileList[0]);
     };
 
     const handleDraggedFiles = (event: React.DragEvent) => {
@@ -58,8 +60,7 @@ export const BackgroundModal = (): ReactElement => {
                 >
                     Upload File
                 </div>
-
-                <img src="" alt="" id="displ" />
+                <WheelOfImages />
             </div>
         </div>
     );
