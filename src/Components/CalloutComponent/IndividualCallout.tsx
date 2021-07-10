@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
 
-import { getDaysSinceText } from "../Util/dateUtil";
+import { getDaysSinceText } from "../../Util/dateUtil";
 
 export interface IndividualCalloutProps {
     name: string;

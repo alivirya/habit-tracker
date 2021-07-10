@@ -58,6 +58,7 @@ export const BackgroundModal = (): ReactElement => {
                 >
                     Upload File
                 </div>
+
                 <img src="" alt="" id="displ" />
             </div>
         </div>

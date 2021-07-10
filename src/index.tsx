@@ -3,11 +3,11 @@ import "@fontsource/lora";
 
 import React, { ReactElement, useEffect, useState } from "react";
 
-import { BackgroundModal } from "./Components/BackgroundModal";
-import { Callout } from "./Components/Callout";
-import { HabitContainer } from "./Components/HabitContainer";
+import { BackgroundModal } from "./Components/Modals/BackgroundModal";
+import { Callout } from "./Components/CalloutComponent/Callout";
+import { CenterContainer } from "./Components/HabitComponents/CenterContainer";
 import { HabitProperties } from "./Types/Habit";
-import { IconButton } from "./Components/IconButton";
+import { IconButton } from "./Components/OtherComponents/IconButton";
 import { render } from "react-dom";
 
 const App = (): ReactElement => {
@@ -36,7 +36,7 @@ const App = (): ReactElement => {
         <React.StrictMode>
             <div className="app">
                 {habits.length !== 0 && <Callout habits={habits} />}
-                <HabitContainer habits={habits} setHabits={setHabits} />
+                <CenterContainer habits={habits} setHabits={setHabits} />
                 <IconButton
                     onClick={openBackgroundModal}
                     className="backgroundButton"

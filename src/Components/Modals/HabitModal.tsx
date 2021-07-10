@@ -1,7 +1,7 @@
 import React, { MouseEvent, ReactElement, useState } from "react";
 
-import { HabitAction } from "../Types/Habit";
-import { getCurrentFormattedDate } from "../Util/dateUtil";
+import { HabitAction } from "../../Types/Habit";
+import { getCurrentFormattedDate } from "../../Util/dateUtil";
 
 export interface HabitEditModalProps {
     action: HabitAction;

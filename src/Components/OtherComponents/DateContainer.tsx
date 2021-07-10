@@ -1,5 +1,5 @@
 import React, { ReactElement, useState } from "react";
-import { getCurrentDayText, getCurrentTimeText } from "../Util/dateUtil";
+import { getCurrentDayText, getCurrentTimeText } from "../../Util/dateUtil";
 
 export const DateContainer = (): ReactElement => {
     const [date, setDate] = useState(getCurrentTimeText());

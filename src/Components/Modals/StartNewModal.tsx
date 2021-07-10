@@ -1,9 +1,13 @@
-import { HabitAction, HabitProperties, UpdateHabitProps } from "../Types/Habit";
+import {
+    HabitAction,
+    HabitProperties,
+    UpdateHabitProps,
+} from "../../Types/Habit";
 import React, { ReactElement } from "react";
 
 import { HabitModal } from "./HabitModal";
 
-export const StartNew = ({
+export const StartNewModal = ({
     habits,
     setHabits,
 }: UpdateHabitProps): ReactElement => {

@@ -1,8 +1,8 @@
 import React, { ReactElement } from "react";
 
-import { HabitProperties } from "../Types/Habit";
+import { HabitProperties } from "../../Types/Habit";
 import { IndividualCallout } from "./IndividualCallout";
-import { countDays } from "../Util/dateUtil";
+import { countDays } from "../../Util/dateUtil";
 
 export interface CalloutProps {
     habits: HabitProperties[];

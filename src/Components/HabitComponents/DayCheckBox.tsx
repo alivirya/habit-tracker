@@ -1,7 +1,7 @@
 import React, { ReactElement, useState } from "react";
-import { getHabit, updateHabitLength } from "../Util/habitUtil";
+import { getHabit, updateHabitLength } from "../../Util/habitUtil";
 
-import { UpdateHabitProps } from "../Types/Habit";
+import { UpdateHabitProps } from "../../Types/Habit";
 
 export interface DayCheckBoxProps extends UpdateHabitProps {
     name: string;

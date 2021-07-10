@@ -17,6 +17,7 @@ This is just a project of mine as I'm dissatisfied with the way I'm tracking my 
 
 -   A better way to update arrays? Not sure if there is something in typescript to make it infer - I think there is something that was done at work, should look at this
 -   A better way to deal with dates? Ah improved a little bit but still kind of annoying
+-   I want to use sass, but will probably mean have to not use webpack? Or maybe I can use webpack, just combine the webpack command with sass build
 
 ## Nice to have
 
