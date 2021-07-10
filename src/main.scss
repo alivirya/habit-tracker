@@ -1,0 +1,90 @@
+@use "Components/HabitComponents/habit.scss";
+@use "Components/CalloutComponent/callout.scss";
+@use "Components/Modals/modal.scss";
+@use "Components/OtherComponents/other.scss";
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+    letter-spacing: 0.025em;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+body {
+    margin: 0;
+    font-family: "Lora";
+    font-size: 17px;
+    color: #000;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    color: #000;
+}
+
+input[type="text"],
+input[type="date"] {
+    border: none;
+    border-bottom: 1px solid #888;
+    height: 1.5rem;
+    margin-bottom: 30px;
+    margin-top: 5px;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus {
+    border-bottom: 1px solid #000;
+    box-shadow: 0 1px 0 0 #000;
+    outline: 0;
+}
+
+.app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+#root::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-image: url("https://images.unsplash.com/photo-1612373402999-42a50b77947b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3451&q=80");
+    background-size: cover;
+    opacity: 0.3;
+}
+
+.backgroundButton {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 8px;
+    margin: 0px 0px 15px 15px;
+    line-height: 0;
+}

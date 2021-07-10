@@ -17,7 +17,7 @@ export const IndividualCallout = ({
     // make it so the emoji is configurable?
 
     return (
-        <div className="habitCelebration">
+        <div className="individualCallout">
             {/* <span role="img" aria-label="">
                 🎉
             </span> */}

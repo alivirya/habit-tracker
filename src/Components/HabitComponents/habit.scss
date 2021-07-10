@@ -1,0 +1,91 @@
+.habitContainer {
+    width: 95%;
+}
+
+.startButton {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    padding: 8px 15px;
+    font-size: 19px;
+    background-color: rgba(255, 255, 255, 0.3);
+    margin-bottom: 10px;
+    border-radius: 2px;
+    width: 200px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.cellContainer {
+    padding: 8px 15px;
+    display: flex;
+    justify-content: center;
+    flex: 2;
+    align-items: center;
+    min-width: 0;
+    text-overflow: ellipsis;
+    background-color: transparent;
+    transition: background 20ms ease-in 0s;
+}
+
+.cellContainer:hover,
+button:hover {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.firstColumn {
+    font-size: 17px;
+    justify-content: flex-start;
+    border-right: 1px solid #000;
+}
+
+.headerRow {
+    border-bottom: 1px solid #000;
+}
+
+.checkboxContainer {
+    display: flex;
+    cursor: pointer;
+    font-size: 22px;
+}
+
+.checkboxContainer input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.customCheckbox {
+    height: 17px;
+    width: 17px;
+    background-color: #fff;
+    border: 1px solid #000;
+}
+
+.customCheckbox:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkboxContainer input:checked ~ .customCheckbox:after {
+    display: block;
+}
+
+.checkboxContainer input:checked ~ .customCheckbox {
+    background-color: #2caadc;
+}
+
+.checkboxContainer .customCheckbox:after {
+    width: 3px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+    margin-left: 5px;
+}

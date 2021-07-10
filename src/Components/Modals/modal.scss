@@ -1,0 +1,85 @@
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 250px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modalContent {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 25px 50px 50px;
+    border: 1px solid #888;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+}
+
+.modalHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modalButton {
+    border: none;
+    border-radius: 2px;
+    height: 3rem;
+    line-height: 2rem;
+    padding: 0 16px;
+    background-color: #000;
+    color: #fff;
+    letter-spacing: 1px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.modalButton:hover {
+    background-color: #323232;
+}
+
+.deleteModalButton {
+    font-family: "Arial";
+    background-color: #c51e3a;
+}
+
+.deleteModalButton:hover {
+    background-color: #dc7888;
+}
+
+.close {
+    height: 40px;
+    width: 40px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.close:hover {
+    background: #000;
+    color: #fff;
+}
+
+.backgroundModal {
+    width: 60%;
+}
+
+.dragDropBackground {
+    border: 2px dashed rgba(0, 0, 0, 0.6);
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(232, 232, 232, 1);
+}
+
+div[dragged="true"] {
+    background-color: rgba(255, 255, 255, 1);
+}

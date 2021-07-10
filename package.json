@@ -9,14 +9,15 @@
             "patterns": [
                 "src"
             ],
-            "extensions": "tsx,ts,css"
+            "extensions": "tsx,ts,scss"
         }
     },
     "scripts": {
         "start": "react-scripts start",
-        "build": "react-scripts build",
+        "build": "npm run sass && react-scripts build",
         "watch": "npm-watch",
         "test": "react-scripts test",
+        "sass": "sass src/main.scss src/style.css",
         "eject": "react-scripts eject"
     },
     "author": "Audrey L",
