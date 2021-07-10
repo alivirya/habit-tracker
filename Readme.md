@@ -1,5 +1,7 @@
 # Habit Tracker Extension
 
+**Disclaimer: Not my best work - I've learnt when you do stuff in your free time that is limited that you want to use, you can get very hacky**
+
 This is just a project of mine as I'm dissatisfied with the way I'm tracking my habits in Notion.
 
 ## Ideal Features
