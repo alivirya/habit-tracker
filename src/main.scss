@@ -68,16 +68,16 @@ input[type="date"]:focus {
     position: relative;
 }
 
-#root::before {
-    content: "";
+#background {
     position: absolute;
     top: 0px;
     right: 0px;
     bottom: 0px;
     left: 0px;
-    background-image: url("https://images.unsplash.com/photo-1612373402999-42a50b77947b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3451&q=80");
     background-size: cover;
     opacity: 0.3;
+    height: 100%;
+    width: 100%;
 }
 
 .backgroundButton {

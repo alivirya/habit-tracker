@@ -34,6 +34,11 @@ const App = (): ReactElement => {
 
     return (
         <React.StrictMode>
+            <img
+                id="background"
+                alt="background"
+                src="https://images.unsplash.com/photo-1612373402999-42a50b77947b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3451&q=80"
+            />
             <div className="app">
                 {habits.length !== 0 && <Callout habits={habits} />}
                 <CenterContainer habits={habits} setHabits={setHabits} />

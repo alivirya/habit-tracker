@@ -16,9 +16,12 @@ export const BackgroundModal = (): ReactElement => {
         const dragArea = document.getElementById("dragArea"); // is there somewhere where i should use useRef
         if (dragArea === null) return;
         dragArea.removeAttribute("dragged");
-        dragArea.innerText = "Upload files";
-        // const dis = document.getElementById("displ") as HTMLImageElement;
-        // dis.src = URL.createObjectURL(fileList[0]);
+        dragArea.innerText = "Upload images here";
+        const background = document.getElementById(
+            "background"
+        ) as HTMLImageElement;
+        if (background === null) return;
+        background.src = URL.createObjectURL(fileList[0]);
     };
 
     const handleDraggedFiles = (event: React.DragEvent) => {
@@ -30,7 +33,7 @@ export const BackgroundModal = (): ReactElement => {
         const dragArea = document.getElementById("dragArea"); // is there somewhere where i should use useRef
         if (dragArea === null) return;
         dragArea.setAttribute("dragged", "true");
-        dragArea.innerText = "Drop files here";
+        dragArea.innerText = "Drop";
     };
 
     const handleDragLeave = (event: React.DragEvent) => {
@@ -58,7 +61,7 @@ export const BackgroundModal = (): ReactElement => {
                     onDragEnter={handleDragEnter}
                     onDragLeave={handleDragLeave}
                 >
-                    Upload File
+                    Upload images here
                 </div>
                 <WheelOfImages />
             </div>
