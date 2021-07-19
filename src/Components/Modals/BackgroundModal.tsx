@@ -1,8 +1,10 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useRef } from "react";
 
 import { WheelOfImages } from "../OtherComponents/WheelOfImages";
 
 export const BackgroundModal = (): ReactElement => {
+    const dragArea = useRef<HTMLDivElement>(null);
+
     const close = () => {
         const backgroundModal = document.getElementById("backgroundModal");
         if (!backgroundModal) return;
@@ -11,12 +13,10 @@ export const BackgroundModal = (): ReactElement => {
 
     const handleDroppedFiles = (event: React.DragEvent) => {
         event.preventDefault();
+        if (!dragArea.current) return;
         const fileList = event.dataTransfer.files;
-        console.log(fileList);
-        const dragArea = document.getElementById("dragArea"); // is there somewhere where i should use useRef
-        if (dragArea === null) return;
-        dragArea.removeAttribute("dragged");
-        dragArea.innerText = "Upload images here";
+        dragArea.current.removeAttribute("dragged");
+        dragArea.current.innerText = "Upload images here";
         const background = document.getElementById(
             "background"
         ) as HTMLImageElement;
@@ -30,23 +30,21 @@ export const BackgroundModal = (): ReactElement => {
 
     const handleDragEnter = (event: React.DragEvent) => {
         event.preventDefault();
-        const dragArea = document.getElementById("dragArea"); // is there somewhere where i should use useRef
-        if (dragArea === null) return;
-        dragArea.setAttribute("dragged", "true");
-        dragArea.innerText = "Drop";
+        if (!dragArea.current) return;
+        dragArea.current.setAttribute("dragged", "true");
+        dragArea.current.innerText = "Drop";
     };
 
     const handleDragLeave = (event: React.DragEvent) => {
         event.preventDefault();
-        const dragArea = document.getElementById("dragArea"); // is there somewhere where i should use useRef
-        if (dragArea === null) return;
-        dragArea.removeAttribute("dragged");
-        dragArea.innerText = "Upload files";
+        if (!dragArea.current) return;
+        dragArea.current.removeAttribute("dragged");
+        dragArea.current.innerText = "Upload files";
     };
 
     return (
         <div className="modal" id="backgroundModal">
-            <div className="modalContent backgroundModal">
+            <div className="modalContent backgroundModalContent">
                 <div className="modalHeader">
                     <h2>Background</h2>
                     <button className="close" onClick={close}>
@@ -56,6 +54,7 @@ export const BackgroundModal = (): ReactElement => {
                 <div
                     className="dragDropBackground"
                     id="dragArea"
+                    ref={dragArea}
                     onDrop={handleDroppedFiles}
                     onDragOver={handleDraggedFiles}
                     onDragEnter={handleDragEnter}
