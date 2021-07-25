@@ -42,16 +42,6 @@ export const SingleTracker = ({
         });
     };
 
-    const refreshCheckboxes = (name: string, startOfWeek: string) => {
-        chrome.storage.local.set({ currentWeek: startOfWeek });
-        const dailyCheckBoxes = document.getElementsByClassName(
-            `${name}dailyCheckBox`
-        ) as HTMLCollectionOf<HTMLInputElement>;
-        for (const checkbox of dailyCheckBoxes) {
-            checkbox.checked = false;
-        }
-    };
-
     const updateHabitInformation = (
         newHabitName: string,
         newHabitStartDate: string
@@ -80,11 +70,11 @@ export const SingleTracker = ({
                     setCheckboxes(name, habit);
                     return;
                 }
-                refreshCheckboxes(name, startOfWeekInISO);
                 setHabits(refreshHabitWeek(name, habits));
+                chrome.storage.local.set({ currentWeek: startOfWeekInISO });
             }
         );
-    }, []);
+    }, [habits]);
 
     return (
         <div className="row">
