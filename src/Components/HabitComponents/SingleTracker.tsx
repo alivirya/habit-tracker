@@ -10,7 +10,7 @@ import {
 } from "../../Types/Habit";
 import React, { MouseEvent, ReactElement, useEffect } from "react";
 import { closeModal, openModal } from "../../Util/modalUtil";
-import { getHabit, refreshHabitWeek } from "../../Util/habitUtil";
+import { getHabit, refreshHabits } from "../../Util/habitUtil";
 
 import { DayCheckBox } from "./DayCheckBox";
 import { HabitModal } from "../Modals/HabitModal";
@@ -70,7 +70,7 @@ export const SingleTracker = ({
                     setCheckboxes(name, habit);
                     return;
                 }
-                setHabits(refreshHabitWeek(name, habits));
+                setHabits(refreshHabits(habits));
                 chrome.storage.local.set({ currentWeek: startOfWeekInISO });
             }
         );
