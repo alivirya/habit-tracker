@@ -12,6 +12,7 @@ import { render } from "react-dom";
 
 const App = (): ReactElement => {
     const [habits, setHabits] = useState<HabitProperties[]>([]);
+    const [background, setBackground] = useState("");
 
     useEffect(() => {
         chrome.storage.local.get(
@@ -20,11 +21,21 @@ const App = (): ReactElement => {
                 setHabits(habits);
             }
         );
+        chrome.storage.local.get(
+            "background",
+            ({ background }: { [key: string]: string }) => {
+                setBackground(background);
+            }
+        );
     }, []);
 
     useEffect(() => {
-        chrome.storage.local.set({ habits: habits });
+        chrome.storage.local.set({ habits });
     }, [habits]);
+
+    useEffect(() => {
+        chrome.storage.local.set({ background });
+    }, [background]);
 
     const openBackgroundModal = () => {
         const backgroundModal = document.getElementById("backgroundModal");
@@ -34,11 +45,7 @@ const App = (): ReactElement => {
 
     return (
         <React.StrictMode>
-            <img
-                id="background"
-                alt="background"
-                src="https://images.unsplash.com/photo-1612373402999-42a50b77947b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3451&q=80"
-            />
+            <img id="background" alt="background" src={background} />
             <div className="app">
                 {habits.length !== 0 && <Callout habits={habits} />}
                 <CenterContainer habits={habits} setHabits={setHabits} />
@@ -46,7 +53,7 @@ const App = (): ReactElement => {
                     onClick={openBackgroundModal}
                     className="backgroundButton"
                 />
-                <BackgroundModal />
+                <BackgroundModal setBackground={setBackground} />
             </div>
         </React.StrictMode>
     );

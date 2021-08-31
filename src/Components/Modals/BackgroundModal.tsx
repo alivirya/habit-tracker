@@ -1,8 +1,15 @@
 import React, { ReactElement, useRef } from "react";
 
 import { WheelOfImages } from "../OtherComponents/WheelOfImages";
+import { updateBackground } from "../../Util/fileUtil";
 
-export const BackgroundModal = (): ReactElement => {
+export interface BackgroundModalProps {
+    setBackground: (background: string) => void;
+}
+
+export const BackgroundModal = ({
+    setBackground,
+}: BackgroundModalProps): ReactElement => {
     const dragArea = useRef<HTMLDivElement>(null);
 
     const close = () => {
@@ -14,14 +21,9 @@ export const BackgroundModal = (): ReactElement => {
     const handleDroppedFiles = (event: React.DragEvent) => {
         event.preventDefault();
         if (!dragArea.current) return;
-        const fileList = event.dataTransfer.files;
         dragArea.current.removeAttribute("dragged");
         dragArea.current.innerText = "Upload images here";
-        const background = document.getElementById(
-            "background"
-        ) as HTMLImageElement;
-        if (background === null) return;
-        background.src = URL.createObjectURL(fileList[0]);
+        updateBackground(setBackground, event.dataTransfer.files);
     };
 
     const handleDraggedFiles = (event: React.DragEvent) => {

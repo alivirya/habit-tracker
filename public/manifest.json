@@ -4,7 +4,7 @@
     "name": "Audo",
     "description": "Habit tracker extension",
     "version": "0.0.1",
-    "permissions": ["storage"],
+    "permissions": ["storage", "unlimitedStorage"],
 
     "browser_action": {
         "default_popup": "index.html",
