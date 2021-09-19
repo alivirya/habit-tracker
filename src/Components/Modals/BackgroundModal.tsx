@@ -1,6 +1,5 @@
 import React, { ReactElement, useRef } from "react";
 
-import { WheelOfImages } from "../OtherComponents/WheelOfImages";
 import { updateBackground } from "../../Util/fileUtil";
 
 export interface BackgroundModalProps {
@@ -64,7 +63,6 @@ export const BackgroundModal = ({
                 >
                     Upload images here
                 </div>
-                <WheelOfImages />
             </div>
         </div>
     );

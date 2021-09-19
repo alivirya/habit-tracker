@@ -73,9 +73,9 @@ export const getDaysSinceText = (
         startDate,
         weeklyCount
     );
-    const yearsText = years > 0 ? `${years} years` : "";
-    const monthsText = months > 0 ? `${months} months` : "";
-    const daysText = `${days} days`;
+    const yearsText = years > 0 ? `${years} year${isPlural(years)}` : "";
+    const monthsText = months > 0 ? `${months} month${isPlural(months)}` : "";
+    const daysText = `${days} day${isPlural(days)}`;
 
     return `${yearsText} ${monthsText} ${daysText}`;
 };
@@ -88,4 +88,8 @@ export const countDays = (days: Days): number => {
     });
 
     return dayCount;
+};
+
+const isPlural = (days: number) => {
+    return days === 1 ? "" : "s";
 };
