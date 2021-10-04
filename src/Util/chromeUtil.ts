@@ -22,7 +22,9 @@ export const seedDataFromChrome = (
     );
     chrome.storage.local.get(
         "mode",
-        ({ mode }: { [key: string]: ModeProperties }) => {}
+        ({ mode }: { [key: string]: ModeProperties }) => {
+            setMode(mode);
+        }
     );
 };
 
