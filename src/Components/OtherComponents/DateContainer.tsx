@@ -8,7 +8,7 @@ export const DateContainer = (): ReactElement => {
     }, 1000);
 
     return (
-        <div className="dateContainer">
+        <div className="textContainer">
             <div className="dateText">{date}</div>
             <div className="dateText">{getCurrentDayText()}</div>
         </div>

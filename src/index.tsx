@@ -6,7 +6,7 @@ import React, { ReactElement, useEffect, useState } from "react";
 
 import { BackgroundModal } from "./Components/Modals/BackgroundModal";
 import { Callout } from "./Components/CalloutComponent/Callout";
-import { CenterContainer } from "./Components/HabitComponents/CenterContainer";
+import { CenterContainer } from "./Components/OtherComponents/CenterContainer";
 import { HabitProperties } from "./Types/Habit";
 import { IconButton } from "./Components/OtherComponents/IconButton";
 import { render } from "react-dom";
@@ -32,6 +32,7 @@ const App = (): ReactElement => {
     }, [background]);
 
     useEffect(() => {
+        console.log(mode);
         chrome.storage.local.set({ mode });
     }, [mode]);
 
@@ -46,7 +47,11 @@ const App = (): ReactElement => {
             <img id="background" alt="background" src={background} />
             <div className="app">
                 {habits.length !== 0 && <Callout habits={habits} />}
-                <CenterContainer habits={habits} setHabits={setHabits} />
+                <CenterContainer
+                    habits={habits}
+                    setHabits={setHabits}
+                    mode={mode}
+                />
                 <IconButton
                     onClick={openBackgroundModal}
                     className="backgroundButton"
